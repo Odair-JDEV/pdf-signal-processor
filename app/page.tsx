@@ -8,8 +8,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { Upload, Download, FileText, AlertCircle } from "lucide-react"
+import { Upload, Download, FileText, AlertCircle, Zap, ChevronDown } from "lucide-react"
 import { Alert, AlertDescription } from "@/components/ui/alert"
+import Image from "next/image"
 
 interface ClientData {
   nome: string
@@ -50,7 +51,6 @@ export default function PDFSignalProcessor() {
     setError("")
 
     // Simular extração de texto do PDF
-    // Em um ambiente real, você usaria uma biblioteca como pdf-parse
     const reader = new FileReader()
     reader.onload = async (e) => {
       const text = await simulatePDFExtraction(selectedFile)
@@ -60,72 +60,17 @@ export default function PDFSignalProcessor() {
   }
 
   const simulatePDFExtraction = async (file: File): Promise<string> => {
-    // Simulação da extração do PDF - em produção use pdf-parse ou similar
     return `INTERMICRO LTDATOPSAPP SISTEMAS - (66)3211-0010 - 16/07/2025 15:09 - Pag 0001
 RELATÓRIO DE NIVEL DE SINAL                                                                    	
 ---------------------------------------------------------------------------------------------------------------------------------------
 DATA       SERVIÇO CLIENTE           USUÁRIO           CTO/PORTA       RX MÉDIA TX MÉDIA RX POWER  TX POWER PERFIL       
 =======================================================================================================================================
-                         BASE OLT UBA APARTAMENTO INES
-=======================================================================================================================================
-SSID/OLT: 172.16.26.22                             	
----------------------------------------------------------------------------------------------------------------------------------------
-PORTA: SLOT 2 PON 1                                	
----------------------------------------------------------------------------------------------------------------------------------------
 16/07/2025 	158190  	ALINE APARECIDA D 	enila.7@imicro.co 	/            	  -13,43 	    2,01 	    0,00 	      0,00 	INTERNET                  	
 Travessa Antônio Silvério                	15         	beco do Canechi                          	Louriçal                                 	
 16/07/2025 	69167   	ANGELA CRISTINA F 	cristina.flores7@ 	/            	  -14,53 	    2,03 	    0,00 	      0,00 	INTERNET                  	
 Travessa Antônio Silvério                	115        	ESCADÃO QUE SAI NA MARIA DO SOPÃO        	Louriçal                                 	
-16/07/2025 	79221   	ANTONIO DE PADUA  	antonio.padua7@im 	/            	  -11,51 	    2,29 	    0,00 	      0,00 	INTERNET                  	
-RUA ALVARO JANUZZI                       	160        	(A) AO LADO DA ESCOLA CURUMIN            	Louriçal                                 	
-16/07/2025 	132300  	CARLOS ALBERTO MA 	calberto.7@imicro 	/            	  -14,76 	    1,57 	    0,00 	      0,00 	INTERNET                  	
-Rua Álvaro Januzzi                       	41         	EM FRENTE A IGREJA  DA ASSEMBLEIA RUA DO 	Louriçal                                 	
-16/07/2025 	130879  	FLAVIO FERNANDO M 	fernanda.fp@imicr 	/            	  -13,39 	    1,82 	    0,00 	      0,00 	INTERNET                  	
-Avenida Hermes Bigonha                   	318        	APTO 103-EM FRENTE AO XODO FUNDO DE QUIN 	Louriçal                                 	
-16/07/2025 	124952  	GLAUCIUS ALOISIO  	glaucius@imicro.c 	/            	  -12,80 	    2,25 	    0,00 	      0,00 	INTERNET                  	
-Avenida Hermes Bigonha                   	40         	                                         	Louriçal                                 	
-16/07/2025 	125792  	JOÃO VICTOR FERRE 	joaovf7@imicro.co 	/            	  -12,81 	    1,92 	    0,00 	      0,00 	INTERNET                  	
-Rua Luiz Bigonha                         	15         	APTO 104 AO LADO DO SUPERMERCADO FORTALE 	Louriçal                                 	
-16/07/2025 	108490  	JOSIANE OLIVEIRA  	josiane.o7@imicro 	/            	  -14,56 	    1,61 	    0,00 	      0,00 	INTERNET                  	
- Avenida Hermes Bigonha                  	318        	APTO 202, EM FRENTE AO BAR FUNDO DE QUIN 	Louriçal                                 	
-16/07/2025 	118372  	JULIANA PEREIRA L 	ju.lima77@imicro. 	/            	  -11,98 	    1,63 	    0,00 	      0,00 	INTERNET                  	
-Rua Luiz Bigonha                         	15         	                                         	Louriçal                                 	
-16/07/2025 	116078  	KATIA APARECIDA M 	katia.ap7@imicro. 	/            	  -14,78 	    2,01 	    0,00 	      0,00 	INTERNET                  	
-Rua Álvaro Januzzi                       	327        	FUNDOS                                   	Louriçal                                 	
-16/07/2025 	109686  	KENNEDY DE PAULA  	kennedy.p7@imicro 	/            	  -12,47 	    1,89 	    0,00 	      0,00 	INTERNET                  	
- Rua Álvaro Januzzi                      	30         	                                         	Louriçal                                 	
-16/07/2025 	61213   	LAIANA APARECIDA  	laiana.pedro7@imi 	/            	  -17,92 	    2,28 	    0,00 	      0,00 	INTERNET                  	
- AVENIDA HERMES BIGONHA                  	340        	CASA - PROXIMO A AGRONATIVA              	Louriçal                                 	
-16/07/2025 	55235   	LAURA BEATRIZ DE  	lauraalvez7@imicr 	/            	  -15,28 	    1,29 	    0,00 	      0,00 	INTERNET                  	
- Avenida Hermes Bigonha                  	326        	EM FRENTE AO ANTIGO BAR XODÓ             	LOURIÇAL                                 	
-16/07/2025 	104729  	LUIZ CLAUDIO DIAS 	luiz.dias7@imicro 	/            	  -13,80 	    1,97 	    0,00 	      0,00 	INTERNET                  	
- AVENIDA HERMES BIGONHA                  	62         	IGREJA PETENCOSTAL ESCOLA DE PROFETAS    	LOURIÇAL                                 	
-16/07/2025 	123531  	MARIA DAS GRAÇAS  	mariabadaro@imicr 	/            	  -13,59 	    1,68 	    0,00 	      0,00 	INTERNET                  	
-Avenida Hermes Bigonha                   	70         	EM FRENTE AO DR                          	Louriçal                                 	
-16/07/2025 	148437  	NATHANY DE PAULA  	nathany.7@imicro. 	/            	  -13,27 	    1,99 	    0,00 	      0,00 	INTERNET                  	
-Rua Antônio Bigonha                      	318        	apt 101 Prédio amarelo da esquina        	Louriçal                                 	
-16/07/2025 	132698  	PAULO MAURICIO NA 	paulomau.7@imicro 	/            	  -12,74 	    2,08 	    0,00 	      0,00 	INTERNET                  	
-Rua Maria Rogéria de Jesus               	11         	APTO 102                                 	Louriçal                                 	
 16/07/2025 	120668  	PAULO ROBERTO DE  	paulo.rd7@imicro. 	/            	    0,00 	    0,00 	    0,00 	      0,00 	INTERNET                  	
-Rua Álvaro Januzzi                       	83         	PROXIMO A ESCOLA                         	Louriçal                                 	
-16/07/2025 	130721  	SABRINA QUELLEN S 	sabrinaque.7@imic 	/            	  -13,36 	    2,25 	    0,00 	      0,00 	INTERNET                  	
-Avenida Hermes Bigonha                   	80         	AO LADO DO DER                           	Louriçal                                 	
-16/07/2025 	125763  	WILSON SORELI TEI 	wilson.soreli7@im 	/            	  -14,16 	    1,73 	    0,00 	      0,00 	INTERNET                  	
-Rua Álvaro Januzzi                       	82         	CASA DE CIMA,RUA DO CURUMIN              	Louriçal                                 	
-16/07/2025 	63893   	CLAUDIO ONIZIO RI 	claudio.onizio7@i 	/            	  -19,72 	    2,29 	    0,00 	      0,00 	INTERNET                  	
- Avenida Comendador Jacinto Soares de So 	00         	RESTAURANTE DA RODOVIARIA                	Centro                                   	
-16/07/2025 	137478  	CRISTIANO RODRIGU 	cristiano2022@imi 	/            	  -15,55 	    1,64 	    0,00 	      0,00 	INTERNET                  	
-Avenida Comendador Jacinto Soares de Sou 	436        	APT 101 - AO LADO DO SACOLÃO             	Centro                                   	
-16/07/2025 	111482  	ELCY PIRES DA CUN 	elcy.7@imicro.com 	/            	  -18,06 	    1,28 	    0,00 	      0,00 	INTERNET                  	
-AVENIDA COMENDADOR JACINTO SOARES DE SOU 	250        	BOX 8                                    	CENTRO                                   	
-16/07/2025 	124199  	IGREJA MUNDIAL DO 	igrejamun@imicro. 	/            	  -15,68 	    1,93 	    0,00 	      0,00 	INTERNET                  	
-Avenida Comendador Jacinto Soares de Sou 	404        	B                                        	Centro                                   	
-16/07/2025 	63894   	JARDEL DE MELO SE 	jardel.mello7@imi 	/            	  -19,72 	    1,48 	    0,00 	      0,00 	INTERNET                  	
- AVENIDA COMENDADOR JACINTO SOARES DE SO 	15         	LANCHONETE PLATAFORMA 15                 	Centro                                   	
-16/07/2025 	105651  	LIDIANE DARC LAUR 	lidiane.darc7@imi 	/            	  -16,09 	    1,65 	    0,00 	      0,00 	INTERNET                  	
-Rua Henrique Russo                       	19         	AP 302 - CHEGANDO NO LACTARIO            	Centro                                   	
-16/07/2025 	116394  	ROBERTO ANDRADE D 	roberto.and@imicr 	/            	  -17,52 	    1,64 	    0,00 	      0,00 	INTERNET                  	
-Avenida Comendador Jacinto Soares de Sou 	420        	APTO 204- DEPOIS DA JACAR- ANTES DO SACO 	Centro                                   	`
+Rua Álvaro Januzzi                       	83         	PROXIMO A ESCOLA                         	Louriçal                                 	`
   }
 
   const processData = () => {
@@ -155,7 +100,6 @@ Avenida Comendador Jacinto Soares de Sou 	420        	APTO 204- DEPOIS DA JACAR-
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i].trim()
 
-      // Procurar por linhas que contêm dados de cliente (começam com data)
       if (line.match(/^\d{2}\/\d{2}\/\d{4}/)) {
         const parts = line.split("\t").map((p) => p.trim())
 
@@ -168,7 +112,6 @@ Avenida Comendador Jacinto Soares de Sou 	420        	APTO 204- DEPOIS DA JACAR-
           const rxPower = parts[7]
           const txPower = parts[8]
 
-          // Próxima linha contém endereço
           const enderecoLine = lines[i + 1]?.trim() || ""
           const enderecoParts = enderecoLine.split("\t").map((p) => p.trim())
 
@@ -184,7 +127,6 @@ Avenida Comendador Jacinto Soares de Sou 	420        	APTO 204- DEPOIS DA JACAR-
             bairro = enderecoParts[3]
           }
 
-          // Completar usuário se necessário - melhorada para lidar com diferentes casos
           let usuarioCompleto = usuario
           if (usuario && !usuario.includes("@imicro.com.br")) {
             if (usuario.endsWith("@i")) {
@@ -208,7 +150,6 @@ Avenida Comendador Jacinto Soares de Sou 	420        	APTO 204- DEPOIS DA JACAR-
             }
           }
 
-          // Verificar se tem sinal zero - incluindo casos onde RX e TX são 0,00
           const temSinalZero = (rxPower === "0,00" && txPower === "0,00") || (rxMedia === "0,00" && txMedia === "0,00")
 
           const client: ClientData = {
@@ -235,7 +176,6 @@ Avenida Comendador Jacinto Soares de Sou 	420        	APTO 204- DEPOIS DA JACAR-
       }
     }
 
-    // Ordenar: clientes com sinal zero primeiro
     return clients.sort((a, b) => {
       if (a.temSinalZero && !b.temSinalZero) return -1
       if (!a.temSinalZero && b.temSinalZero) return 1
@@ -253,7 +193,7 @@ Avenida Comendador Jacinto Soares de Sou 	420        	APTO 204- DEPOIS DA JACAR-
       if (client.endereco.referencia) {
         output += `REFERENCIA: ${client.endereco.referencia}\n`
       }
-      output += `\n` // Adicionar quebra de linha antes do PPOE
+      output += `\n`
       output += `PPOE: ${client.usuario}\n`
       output += `COD/SERVIÇO: ${client.codigoServico}\n`
       output += `SINAL HST: ${client.sinalHST.rxMedia}|${client.sinalHST.txMedia}|${client.sinalHST.rxPower}|${client.sinalHST.txPower}\n`
@@ -264,12 +204,21 @@ Avenida Comendador Jacinto Soares de Sou 	420        	APTO 204- DEPOIS DA JACAR-
   }
 
   const downloadOutput = () => {
+    if (!file) {
+      setError("Nenhum arquivo PDF foi carregado para gerar o nome do arquivo de saída.")
+      return
+    }
+
     const output = generateOutput()
     const blob = new Blob([output], { type: "text/plain;charset=utf-8" })
     const url = URL.createObjectURL(blob)
     const link = document.createElement("a")
     link.href = url
-    link.download = `relatorio_sinal_${new Date().toISOString().split("T")[0]}.txt`
+
+    // Extrair o nome do arquivo sem a extensão e adicionar .txt
+    const fileNameWithoutExtension = file.name.split(".").slice(0, -1).join(".")
+    link.download = `${fileNameWithoutExtension}.txt`
+
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
@@ -277,120 +226,195 @@ Avenida Comendador Jacinto Soares de Sou 	420        	APTO 204- DEPOIS DA JACAR-
   }
 
   return (
-    <div className="container mx-auto p-6 max-w-4xl">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">Processador de Relatórios de Sinal</h1>
-        <p className="text-muted-foreground">
-          Faça upload de arquivos PDF contendo relatórios de nível de sinal para extrair e organizar os dados dos
-          clientes.
-        </p>
+    <div className="min-h-screen bg-gradient-to-br from-blue-950 via-blue-800 to-blue-600 text-white flex flex-col">
+      {/* Header */}
+      <div className="bg-white/5 backdrop-blur-xl border-b border-white/10 shadow-lg">
+        <div className="container mx-auto px-6 py-4">
+          <div className="flex items-center gap-4">
+            <Image src="/imicro-logo.png" alt="Imicro Telecom" width={120} height={40} className="h-10 w-auto" />
+            <div className="flex items-center gap-2 text-white">
+              <Zap className="h-6 w-6 text-blue-300" />
+              <span className="text-xl font-semibold">Processador de Relatórios</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="grid gap-6">
-        {/* Upload Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Upload className="h-5 w-5" />
-              Upload do Arquivo PDF
-            </CardTitle>
-            <CardDescription>Selecione o arquivo PDF contendo o relatório de nível de sinal</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              <div>
-                <Label htmlFor="pdf-file">Arquivo PDF</Label>
-                <Input id="pdf-file" type="file" accept=".pdf" onChange={handleFileUpload} className="mt-1" />
-              </div>
+      <div className="container mx-auto p-6 max-w-4xl flex-grow">
+        <div className="mb-10 text-center">
+          <h1 className="text-5xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-50">
+            Sistema de Processamento de Relatórios
+          </h1>
+          <p className="text-blue-100 text-lg max-w-2xl mx-auto">
+            Extraia e organize dados de clientes a partir de relatórios PDF de nível de sinal com elegância e
+            eficiência.
+          </p>
+        </div>
 
-              {file && (
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <FileText className="h-4 w-4" />
-                  {file.name} ({(file.size / 1024).toFixed(1)} KB)
-                </div>
-              )}
-
-              {error && (
-                <Alert variant="destructive">
-                  <AlertCircle className="h-4 w-4" />
-                  <AlertDescription>{error}</AlertDescription>
-                </Alert>
-              )}
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Processing Section */}
-        {extractedText && (
-          <Card>
-            <CardHeader>
-              <CardTitle>Texto Extraído</CardTitle>
-              <CardDescription>Texto extraído do PDF - clique em "Processar Dados" para analisar</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Textarea
-                value={extractedText}
-                onChange={(e) => setExtractedText(e.target.value)}
-                className="min-h-[200px] font-mono text-sm"
-                placeholder="Texto extraído do PDF aparecerá aqui..."
-              />
-              <div className="mt-4">
-                <Button onClick={processData} disabled={isProcessing} className="w-full">
-                  {isProcessing ? "Processando..." : "Processar Dados"}
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        )}
-
-        {/* Results Section */}
-        {processedData.length > 0 && (
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center justify-between">
-                <span>Dados Processados</span>
-                <Button onClick={downloadOutput} className="flex items-center gap-2">
-                  <Download className="h-4 w-4" />
-                  Baixar TXT
-                </Button>
+        <div className="grid gap-8">
+          {/* Upload Section */}
+          <Card className="bg-white/5 backdrop-blur-xl border border-blue-300/20 shadow-2xl animate-fade-in-up animation-delay-100">
+            <CardHeader className="bg-gradient-to-r from-blue-700 to-blue-500 text-white rounded-t-lg p-6">
+              <CardTitle className="flex items-center gap-3 text-2xl font-bold">
+                <Upload className="h-6 w-6" />
+                Upload do Arquivo PDF
               </CardTitle>
-              <CardDescription>
-                {processedData.length} clientes encontrados
-                {processedData.filter((c) => c.temSinalZero).length > 0 &&
-                  ` (${processedData.filter((c) => c.temSinalZero).length} com sinal |0,00|0,00)`}
+              <CardDescription className="text-blue-100 text-base">
+                Selecione o arquivo PDF contendo o relatório de nível de sinal
               </CardDescription>
             </CardHeader>
-            <CardContent>
-              <div className="space-y-4 max-h-[400px] overflow-y-auto">
-                {processedData.slice(0, 5).map((client, index) => (
-                  <div key={index} className="border rounded-lg p-4 bg-muted/50">
-                    <div className="space-y-1 text-sm">
-                      <div className="font-semibold">CLIENTE: {client.nome}</div>
-                      <div>
-                        {client.endereco.rua}-{client.endereco.numero}
-                      </div>
-                      <div>BAIRRO: {client.endereco.bairro}</div>
-                      {client.endereco.referencia && <div>REFERENCIA: {client.endereco.referencia}</div>}
-                      <div>PPOE: {client.usuario}</div>
-                      <div>COD/SERVIÇO: {client.codigoServico}</div>
-                      <div className={client.temSinalZero ? "text-red-600 font-semibold" : ""}>
-                        SINAL HST: {client.sinalHST.rxMedia}|{client.sinalHST.txMedia}|{client.sinalHST.rxPower}|
-                        {client.sinalHST.txPower}
-                      </div>
-                    </div>
-                  </div>
-                ))}
+            <CardContent className="p-6">
+              <div className="space-y-6">
+                <div>
+                  <Label htmlFor="pdf-file" className="text-blue-100 font-medium text-lg">
+                    Arquivo PDF
+                  </Label>
+                  <Input
+                    id="pdf-file"
+                    type="file"
+                    accept=".pdf"
+                    onChange={handleFileUpload}
+                    className="mt-3 border-blue-400/50 bg-blue-900/30 text-white placeholder:text-blue-200 focus:border-blue-500 focus:ring-blue-500 file:text-blue-100 file:bg-blue-700 file:hover:bg-blue-600 file:border-none file:rounded-md file:px-4 file:py-2 file:mr-4"
+                  />
+                </div>
 
-                {processedData.length > 5 && (
-                  <div className="text-center text-muted-foreground">
-                    ... e mais {processedData.length - 5} clientes
+                {file && (
+                  <div className="flex items-center gap-3 text-base text-blue-100 bg-blue-800/30 p-4 rounded-lg border border-blue-400/30">
+                    <FileText className="h-5 w-5 text-blue-300" />
+                    <span className="font-medium">{file.name}</span>
+                    <span className="text-blue-200">({(file.size / 1024).toFixed(1)} KB)</span>
                   </div>
+                )}
+
+                {error && (
+                  <Alert variant="destructive" className="border-red-400 bg-red-900/30 text-red-200">
+                    <AlertCircle className="h-5 w-5 text-red-300" />
+                    <AlertDescription>{error}</AlertDescription>
+                  </Alert>
                 )}
               </div>
             </CardContent>
           </Card>
-        )}
+
+          {/* Processing Section */}
+          {extractedText && (
+            <Card className="bg-white/5 backdrop-blur-xl border border-blue-300/20 shadow-2xl animate-fade-in-up animation-delay-200">
+              <CardHeader className="bg-gradient-to-r from-blue-700 to-blue-500 text-white rounded-t-lg p-6">
+                <CardTitle className="text-2xl font-bold">Texto Extraído</CardTitle>
+                <CardDescription className="text-blue-100 text-base">
+                  Texto extraído do PDF - clique em "Processar Dados" para analisar
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="p-6">
+                <Textarea
+                  value={extractedText}
+                  onChange={(e) => setExtractedText(e.target.value)}
+                  className="min-h-[200px] font-mono text-sm border-blue-400/50 bg-blue-900/30 text-white placeholder:text-blue-200 focus:border-blue-500 focus:ring-blue-500"
+                  placeholder="Texto extraído do PDF aparecerá aqui..."
+                />
+                <div className="mt-6">
+                  <Button
+                    onClick={processData}
+                    disabled={isProcessing}
+                    className="w-full bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 text-white font-semibold py-3 text-lg shadow-lg transition-all duration-300 ease-in-out"
+                  >
+                    {isProcessing ? (
+                      <>
+                        <Zap className="mr-2 h-5 w-5 animate-spin" />
+                        Processando...
+                      </>
+                    ) : (
+                      <>
+                        <Zap className="mr-2 h-5 w-5" />
+                        Processar Dados
+                      </>
+                    )}
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Results Section */}
+          {processedData.length > 0 && (
+            <>
+              <Card className="bg-white/5 backdrop-blur-xl border border-blue-300/20 shadow-2xl animate-fade-in-up animation-delay-300">
+                <CardHeader className="bg-gradient-to-r from-blue-700 to-blue-500 text-white rounded-t-lg p-6">
+                  <CardTitle className="flex items-center justify-between text-2xl font-bold">
+                    <span>Dados Processados</span>
+                    <Button
+                      onClick={downloadOutput}
+                      className="bg-white text-blue-700 hover:bg-blue-100 font-semibold shadow-md transition-all duration-300 ease-in-out"
+                    >
+                      <Download className="h-5 w-5 mr-2" />
+                      Baixar TXT
+                    </Button>
+                  </CardTitle>
+                  <CardDescription className="text-blue-100 text-base">
+                    {processedData.length} clientes encontrados
+                    {processedData.filter((c) => c.temSinalZero).length > 0 &&
+                      ` (${processedData.filter((c) => c.temSinalZero).length} com sinal |0,00|0,00)`}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="p-6">
+                  <div className="space-y-4 max-h-[400px] overflow-y-auto custom-scrollbar">
+                    {processedData.slice(0, 5).map((client, index) => (
+                      <div
+                        key={index}
+                        className={`border rounded-lg p-4 ${
+                          client.temSinalZero
+                            ? "bg-red-900/30 border-red-400 text-red-100"
+                            : "bg-blue-900/30 border-blue-400/50 text-blue-100"
+                        }`}
+                      >
+                        <div className="space-y-1 text-sm">
+                          <div className="font-semibold">CLIENTE: {client.nome}</div>
+                          <div>
+                            {client.endereco.rua}-{client.endereco.numero}
+                          </div>
+                          <div>BAIRRO: {client.endereco.bairro}</div>
+                          {client.endereco.referencia && <div>REFERENCIA: {client.endereco.referencia}</div>}
+                          <div className="mt-2">PPOE: {client.usuario}</div>
+                          <div>COD/SERVIÇO: {client.codigoServico}</div>
+                          <div className={client.temSinalZero ? "text-red-300 font-semibold" : "text-blue-300"}>
+                            SINAL HST: {client.sinalHST.rxMedia}|{client.sinalHST.txMedia}|{client.sinalHST.rxPower}|
+                            {client.sinalHST.txPower}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+
+                    {processedData.length > 5 && (
+                      <div className="text-center text-blue-200 bg-blue-900/30 p-4 rounded-lg border border-blue-400/30">
+                        ... e mais {processedData.length - 5} clientes
+                      </div>
+                    )}
+                  </div>
+                </CardContent>
+              </Card>
+              {/* Scroll Indicator */}
+              <div className="flex justify-center mt-8">
+                <ChevronDown className="h-12 w-12 text-blue-300 animate-bounce" aria-label="Role para baixo" />
+              </div>
+            </>
+          )}
+        </div>
       </div>
+
+      {/* Footer */}
+      <footer className="mt-auto py-6 text-center text-blue-200 bg-white/5 backdrop-blur-xl border-t border-white/10">
+        <p className="text-sm">
+          Desenvolvido por{" "}
+          <a
+            href="https://odair.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-300 hover:text-blue-100 font-semibold transition-colors duration-200"
+          >
+            Odair.dev
+          </a>
+        </p>
+      </footer>
     </div>
   )
 }
